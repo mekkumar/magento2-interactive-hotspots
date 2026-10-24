@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type name="kumar_interactive_hotspots"
+          translate="label"
+          label="Interactive Hotspots"
+          menu_section="add_content"
+          component="Magento_PageBuilder/js/content-type"
+          preview_component="Kumar_InteractiveHotspots/js/content-type/interactive-hotspots/preview"
+          master_component="Kumar_InteractiveHotspots/js/content-type/interactive-hotspots/master"
+          form="kumar_interactive_hotspots_form"
+          icon="icon-pagebuilder-image"
+          sortOrder="95">
+
+        <parents default_policy="deny">
+            <parent name="root-container" policy="allow"/>
+            <parent name="row" policy="allow"/>
+            <parent name="column" policy="allow"/>
+            <parent name="tabs" policy="allow"/>
+            <parent name="tab-item" policy="allow"/>
+        </parents>
+
+        <appearances>
+            <appearance name="default"
+                        default="true"
+                        preview_template="Kumar_InteractiveHotspots/content-type/interactive-hotspots/preview"
+                        master_template="Kumar_InteractiveHotspots/content-type/interactive-hotspots/master"
+                        reader="Magento_PageBuilder/js/master-format/read/configurable">
+
+                <elements>
+                    <element name="main">
+                        <attribute name="name" source="data-content-type"/>
+                        <attribute name="appearance" source="data-appearance"/>
+                        <attribute name="hotspots" source="data-hotspots" reader="Magento_PageBuilder/js/property/attribute-reader"/>
+                        <css name="css_classes"/>
+                    </element>
+
+                    <element name="image">
+                        <style name="border"
+                               source="border_style"
+                               converter="Magento_PageBuilder/js/converter/style/border-style"/>
+                        <style name="border_color" source="border_color"/>
+                        <style name="border_width"
+                               source="border_width"
+                               converter="Magento_PageBuilder/js/converter/style/border-width"/>
+                        <style name="border_radius"
+                               source="border_radius"
+                               converter="Magento_PageBuilder/js/converter/style/remove-px"/>
+                        <static_style source="max-width" value="100%"/>
+                        <static_style source="height" value="auto"/>
+                        <attribute name="image"
+                                   source="src"
+                                   converter="Magento_PageBuilder/js/converter/attribute/src"
+                                   preview_converter="Magento_PageBuilder/js/converter/attribute/preview/src"/>
+                        <attribute name="alt" source="alt"/>
+                    </element>
+                </elements>
+            </appearance>
+        </appearances>
+
+        <additional_data>
+            <item name="uploaderConfig" xsi:type="array">
+                <item name="allowedExtensions" xsi:type="string">jpg jpeg png gif webp</item>
+                <item name="component" xsi:type="string">Magento_PageBuilder/js/form/element/image-uploader</item>
+                <item name="componentType" xsi:type="string">imageUploader</item>
+                <item name="dataScope" xsi:type="string">image</item>
+                <item name="formElement" xsi:type="string">imageUploader</item>
+                <item name="uploaderConfig" xsi:type="array">
+                    <item name="url" xsi:type="string">kumar_interactivehotspots/image/upload</item>
+                </item>
+                <item name="previewTmpl" xsi:type="string">Magento_PageBuilder/form/element/uploader/preview</item>
+                <item name="template" xsi:type="string">Magento_PageBuilder/form/element/uploader/preview/image</item>
+            </item>
+        </additional_data>
+    </type>
+</config>

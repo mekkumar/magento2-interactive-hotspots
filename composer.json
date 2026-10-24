@@ -1,0 +1,9 @@
+{
+  "name": "kumar/module-interactive-hotspots",
+  "description": "Responsive interactive image hotspots content type for Magento Page Builder",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": "proprietary",
+  "autoload": {"files": ["registration.php"], "psr-4": {"Kumar\\InteractiveHotspots\\": ""}},
+  "require": {"magento/module-page-builder": "*", "magento/module-backend": "*"}
+}

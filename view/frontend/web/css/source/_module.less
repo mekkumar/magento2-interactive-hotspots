@@ -1,0 +1,129 @@
+// Frontend responsive image hotspot styles.
+.kumar-interactive-hotspots {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.kumar-interactive-hotspots__image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.kumar-interactive-hotspots__point {
+    position: absolute;
+    z-index: 2;
+    left: var(--khp-x);
+    top: var(--khp-y);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // Responsive size: 26px minimum, 38px maximum.
+    width: 32px;
+    height: 32px;
+    padding: 0;
+
+    border: 2px solid #fff;
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+    background: #171717;
+    color: #fff;
+
+    font: 600 13px/1 Arial, sans-serif;
+    text-decoration: none;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+    cursor: pointer;
+
+    transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.kumar-interactive-hotspots__point:hover,
+.kumar-interactive-hotspots__point:focus-visible {
+    z-index: 4;
+    transform: translate(-50%, -50%) scale(1.1);
+    background: #315b4d;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.kumar-interactive-hotspots__tooltip {
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    bottom: calc(100% + 10px);
+
+    // Fixed maximum width; viewport constraints are applied below.
+    width: 260px;
+    max-width: 70vw;
+    box-sizing: border-box;
+
+    padding: 14px 16px;
+    border-radius: 8px;
+
+    background: #fff;
+    color: #202124;
+
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    line-height: 1.45;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 5px);
+
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease,
+        visibility 0.18s ease;
+
+    pointer-events: none;
+}
+
+.kumar-interactive-hotspots__point:hover
+.kumar-interactive-hotspots__tooltip,
+.kumar-interactive-hotspots__point:focus
+.kumar-interactive-hotspots__tooltip,
+.kumar-interactive-hotspots__point.is-open
+.kumar-interactive-hotspots__tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+}
+
+.kumar-interactive-hotspots__tooltip strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.kumar-interactive-hotspots__tooltip p {
+    margin: 0 0 8px;
+    font-size: 13px;
+}
+
+.kumar-interactive-hotspots__tooltip a {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+@media (max-width: 767px) {
+    .kumar-interactive-hotspots__point {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+    }
+
+    .kumar-interactive-hotspots__tooltip {
+        width: 220px;
+        max-width: 68vw;
+        padding: 11px 12px;
+    }
+}

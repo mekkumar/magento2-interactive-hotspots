@@ -1,0 +1,41 @@
+<div class="kumar-interactive-hotspots"
+     data-element="main"
+     data-bind="attr: {
+         'data-content-type': 'kumar_interactive_hotspots',
+         'data-appearance': 'default',
+         'data-hotspots': JSON.stringify(getHotspots())
+     }">
+
+    <img class="kumar-interactive-hotspots__image"
+         attr="data.image.attributes"
+         css="data.image.css"
+         ko-style="data.image.style"
+         alt=""/>
+
+    <div class="khp-frontend-points"
+         data-bind="visible: getImageUrl(), foreach: getHotspots()">
+
+        <a class="kumar-interactive-hotspots__point"
+           data-bind="
+               style: {
+                   '--khp-x': (Number(x) || 0) + '%',
+                   '--khp-y': (Number(y) || 0) + '%'
+               },
+               attr: {
+                   href: url ? (/^https?:\/\//i.test(url) ? url : 'https://' + url) : '#',
+                   target: url ? '_blank' : null,
+                   rel: url ? 'noopener noreferrer' : null,
+                   'data-url': url ? (/^https?:\/\//i.test(url) ? url : 'https://' + url) : '',
+                   'aria-label': name || ('Hotspot ' + ($index() + 1))
+               }">
+
+            <span class="kumar-interactive-hotspots__number"
+                  data-bind="text: $index() + 1"></span>
+
+            <span class="kumar-interactive-hotspots__tooltip">
+                <strong data-bind="text: name, visible: name"></strong>
+                <p data-bind="text: description, visible: description"></p>
+            </span>
+        </a>
+    </div>
+</div>

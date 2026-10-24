@@ -1,0 +1,31 @@
+<div class="pagebuilder-content-type pagebuilder-image type-nested khp-preview"
+     attr="data.main.attributes"
+     css="data.main.css"
+     event="{ mouseover: onMouseOver, mouseout: onMouseOut }, mouseoverBubble: false">
+
+    <render args="getOptions().template"></render>
+
+    <figure class="khp-stage" data-hotspot-stage="1">
+
+        <img class="khp-preview-image"
+             alt=""
+             data-bind="attr: { src: getImageUrl() }, visible: getImageUrl()" />
+
+        <div class="khp-preview-points"
+             data-bind="foreach: getHotspots()">
+            <button type="button"
+                    class="khp-preview-point"
+                    data-bind="
+                        style: {
+                            left: (Number(x) || 0) + '%',
+                            top: (Number(y) || 0) + '%'
+                        },
+                        attr: {
+                            title: name || ('Hotspot ' + ($index() + 1)),
+                            'aria-label': name || ('Hotspot ' + ($index() + 1))
+                        },
+                        text: $index() + 1">
+            </button>
+        </div>
+    </figure>
+</div>

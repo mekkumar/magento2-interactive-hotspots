@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type name="kumar_interactive_hotspots">
+        <appearances>
+            <appearance name="default">
+                <elements>
+                    <element name="main">
+                        <attribute name="image" source="data-hotspots-image"/>
+                        <attribute name="hotspots" source="data-hotspots"/>
+                    </element>
+                </elements>
+            </appearance>
+        </appearances>
+    </type>
+</config>
